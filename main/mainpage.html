@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <link href="./../css/tailwind.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./../css/main.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="min-h-screen bg-gray-50">
+      <nav
+        class="fixed top-14 left-0 z-20 h-full pb-10 overflow-x-hidden overflow-y-auto transition origin-left transform bg-white border-r w-60 hidden lg:block"
+        id="menu"
+      >
+        <button
+          type="button"
+          class="py-1 px-2.5 hover:ring focus:ring ring-green-700 float-right text-gray-800 hover:text-red-600 block lg:hidden"
+          id="close_button"
+          onclick="closeMenu()"
+        >
+          <i class="fa fa-close"></i>
+        </button>
+        <nav
+          class="text-sm font-medium text-gray-600"
+          aria-label="Main Navigation"
+        >
+          <a
+            class="flex items-center px-4 py-3 transition cursor-pointer group hover:bg-gray-100 hover:text-gray-900"
+            href="#"
+          >
+            <span> <i class="fas fa-user"></i> Users</span>
+          </a>
+          <a
+            class="flex items-center px-4 py-3 transition cursor-pointer group hover:bg-gray-100 hover:text-gray-900"
+            href="#"
+          >
+            <span><i class="fas fa-users"></i>Create Users</span>
+          </a>
+          <a
+            class="flex items-center px-4 py-3 transition cursor-pointer group hover:bg-gray-100 hover:text-gray-900"
+            href="#"
+          >
+            <span><i class="fas fa-spider"></i> Roles</span>
+          </a>
+          <div x-data="collapse()">
+            <div
+              class="flex items-center justify-between px-4 py-3 transition cursor-pointer group hover:bg-gray-100 hover:text-gray-900"
+              role="button"
+              x-spread="trigger"
+            >
+              <div class="flex items-center">
+                <span>List Managment</span>
+              </div>
+            </div>
+            <div class="mb-4" x-spread="collapse" x-cloak>
+              <a
+                class="flex items-center py-2 pl-12 pr-4 transition cursor-pointer hover:bg-gray-100 hover:text-gray-900"
+                href="#"
+                ><i class="fa fa-asterisk"></i> Service Category</a
+              >
+              <a
+                class="flex items-center py-2 pl-12 pr-4 transition cursor-pointer hover:bg-gray-100 hover:text-gray-900"
+                href="#"
+                ><i class="fa fa-adjust"></i>Service Catalogue</a
+              >
+              <a
+                class="flex items-center py-2 pl-12 pr-4 transition cursor-pointer hover:bg-gray-100 hover:text-gray-900"
+                href="#"
+                ><i class="fa fa-product-hunt"></i>Product Category</a
+              >
+              <a
+                class="flex items-center py-2 pl-12 pr-4 transition cursor-pointer hover:bg-gray-100 hover:text-gray-900"
+                href="#"
+                ><i class="fa fa-adn"></i>Product Catalogue</a
+              >
+              <a
+                class="flex items-center py-2 pl-12 pr-4 transition cursor-pointer hover:bg-gray-100 hover:text-gray-900"
+                href="#"
+                ><i class="fa fa-briefcase"></i>Customer Details</a
+              >
+              <a
+                class="flex items-center py-2 pl-12 pr-4 transition cursor-pointer hover:bg-gray-100 hover:text-gray-900"
+                href="#"
+                ><i class="fa fas fa-store"></i>Store</a
+              >
+            </div>
+          </div>
+          <a
+            class="flex items-center px-4 py-3 transition cursor-pointer group hover:bg-gray-100 hover:text-gray-900"
+            href="#"
+          >
+            <span><i class="fa fas fa-file-invoice"></i> Inventory</span>
+          </a>
+          <a
+            class="flex items-center px-4 py-3 text-gray-900 transition bg-gray-100 cursor-pointer group hover:bg-gray-100 hover:text-gray-900"
+            href="#"
+          >
+            <span> <i class="fa fab fa-first-order"></i> Inventory Orders</span>
+          </a>
+          <a
+            class="flex items-center px-4 py-3 transition cursor-pointer group hover:bg-gray-100 hover:text-gray-900"
+            href="#"
+          >
+            <span> <i class="fa fa-star-half-o"></i>Activities</span>
+          </a>
+        </nav>
+      </nav>
+      <div class="ml-0 transition lg:ml-60" overflow-auto id="main">
+        <header
+          class="flex items-center justify-between w-full px-4 bg-white border-b h-14 fixed left-0 z-50"
+        >
+          <p class="text-purple-800 font-bold text-4xl">CS</p>
+          <div class="py-5 hidden md:block">
+            <a href="#" class="links">Chicken</a>
+            <a href="#" class="links">Duck</a>
+            <a href="#" class="links">Rabbits</a>
+            <a href="#" class="links">Report</a>
+          </div>
+
+          <div class="flex items-center">
+            <a href="#" class="flex text-gray-500 p-2"
+              ><i class="fa fa-bell-o"></i>
+            </a>
+            <a href="#" class="flex text-gray-500 p-2"
+              ><i class="fa fas fas fa-stopwatch"></i>
+            </a>
+            <a href="#" class="flex text-gray-500 p-2"
+              ><i class="fa fas fas fa-cog"></i>
+            </a>
+            <a href="#" class="ml-4 avatar avatar-sm w-12 rounded-full">
+              <img
+                src="/images/Free_Sample_By_Wix.jpg"
+                alt="Yarison's Image"
+                class="rounded-full"
+              />
+            </a>
+          </div>
+        </header>
+        <div class="fixed lg:relative w-full z-50">
+          <header
+            class="flex items-center text-lg justify-between w-full relative top-14 px-4 bg-white border-b overflow-auto"
+            id="skicky_header"
+          >
+            <div class="flex items-center font-medium">
+              <button
+                class="hidden lg:block py-1 px-2 bg-gray-50"
+                id="menu_bar"
+                onclick="menuBar()"
+              >
+                <span><i class="fa fas fa-bars"></i></span>
+              </button>
+              <button
+                class="block lg:hidden py-1 px-2 bg-gray-50"
+                id="menu_bar"
+                onclick="mobileMenu()"
+              >
+                <span><i class="fa fas fa-bars"></i></span>
+              </button>
+              <a href="#" class="hidden md:flex text-gray-900 p-2"
+                >Inventory Orders
+              </a>
+              <i>64</i>
+            </div>
+            <div class="">
+              <button
+                class="bg-green-700 hover:bg-green-800 px-3 py-2 text-xls text-white"
+              >
+                <i class="fa fa-plus mr-1"></i>New Order
+              </button>
+              <button
+                class="px-3 py-2 mx-2 bg-gray-50 shadow hover:ring ring-green-700 focus:ring"
+              >
+                <i class="fa fa-ellipsis-h"></i>
+              </button>
+            </div>
+          </header>
+        </div>
+        <div class="p-4 top-28 lg:top-28 relative float-left w-full lg:w-2/5">
+          <div class="border">
+            <div
+              class="text-gray-500 hover:text-black transition focus:text-black"
+            >
+              <button
+                class="ml-1 my-2 p-2 bg-white rounded-tl-full rounded-bl-full -mr-1"
+              >
+                <i class="fa fa-search"></i>
+              </button>
+              <input
+                class="border-0 p-2 rounded-tr-full rounded-br-full text-gray-600 hover:text-black focus:text-black"
+                placeholder="Search for articles..."
+                class=""
+              />
+              <div class="float-right hidden md:block">
+                <button class="ml-1 my-2 py-2 px-3 bg-white shadow">
+                  <i class="fa fa-filter"></i>
+                </button>
+                <button class="mr-2 my-2 p-2 bg-white shadow">
+                  <i class="fa fas fa-sort-amount-down-alt"></i>
+                </button>
+              </div>
+            </div>
+            <div class="h-92 overflow-y-auto w-full bg-white">
+              <div class="w-full bg-white border p-3">
+                <span class="font-bold">Raddison Blue</span>
+                <span class="float-right font-medium">$34.344</span>
+                <p class="font-light text-sm">
+                  Two Torns of Chicken meat with 27 Rabbits
+                </p>
+              </div>
+              <div class="w-full bg-white border p-3">
+                <span class="font-bold">Raddison Blue</span>
+                <span class="float-right font-medium">$34.344</span>
+                <p class="font-light text-sm">
+                  Two Torns of Chicken meat with 27 Rabbits
+                </p>
+              </div>
+              <div class="w-full bg-white border p-3">
+                <span class="font-bold">Raddison Blue</span>
+                <span class="float-right font-medium">$34.344</span>
+                <p class="font-light text-sm">
+                  Two Torns of Chicken meat with 27 Rabbits
+                </p>
+              </div>
+              <div class="w-full bg-white border p-3">
+                <span class="font-bold">Raddison Blue</span>
+                <span class="float-right font-medium">$34.344</span>
+                <p class="font-light text-sm">
+                  Two Torns of Chicken meat with 27 Rabbits
+                </p>
+              </div>
+              <div class="w-full bg-white border p-3">
+                <span class="font-bold">Raddison Blue</span>
+                <span class="float-right font-medium">$34.344</span>
+                <p class="font-light text-sm">
+                  Two Torns of Chicken meat with 27 Rabbits
+                </p>
+              </div>
+              <div class="w-full bg-white border p-3">
+                <span class="font-bold">Raddison Blue</span>
+                <span class="float-right font-medium">$34.344</span>
+                <p class="font-light text-sm">
+                  Two Torns of Chicken meat with 27 Rabbits
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-4 top-28 lg:top-28 relative float-left w-full lg:w-3/5">
+          <div class="border bg-white h-98 overflow-y-auto">
+            <header
+              class="flex items-center justify-between w-full relative px-4 bg-white border-b h-14"
+            >
+              <div class="flex items-center text-base md:text-xl font-medium">
+                <a href="#" class="flex text-gray-900 p-2"
+                  >Inventory Orders Info
+                </a>
+              </div>
+              <div>
+                <button
+                  class="px-3 py-1 mx-1.5 bg-gray-50 shadow hover:ring ring-green-700 focus:ring"
+                >
+                  <i class="fa fa-ellipsis-h"></i>
+                </button>
+              </div>
+            </header>
+            <table class="w-full">
+              <thead>
+                <tr>
+                  <th class="bg-gray-50">Product</th>
+                  <th class="bg-gray-50">Cost</th>
+                  <th class="bg-gray-50">Paid by</th>
+                  <th class="bg-gray-50">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Eggs</td>
+                  <td>$5.21</td>
+                  <td>Marriot</td>
+                  <td>$100</td>
+                </tr>
+                <tr>
+                  <td>Eggs</td>
+                  <td>$5.21</td>
+                  <td>Marriot</td>
+                  <td>$100</td>
+                </tr>
+                <tr>
+                  <td>Eggs</td>
+                  <td>$5.21</td>
+                  <td>Marriot</td>
+                  <td>$100</td>
+                </tr>
+                <tr>
+                  <td>Eggs</td>
+                  <td>$5.21</td>
+                  <td>Marriot</td>
+                  <td>$100</td>
+                </tr>
+                <tr>
+                  <td>Eggs</td>
+                  <td>$5.21</td>
+                  <td>Marriot</td>
+                  <td>$100</td>
+                </tr>
+              </tbody>
+            </table>
+            <button
+              class="m-2 text-green-600 bg-white hover:text-green-900 px-3 py-2 text-xls border border-green-600 hover:border-green-900"
+            >
+              <i class="fa fa-plus mr-1"></i>New Order
+            </button>
+            <div class="text-right float-right w-1\2 p-2">
+              <p>Discount Received: $100</p>
+              <p>Tax Paid: $100</p>
+              <p>Shipping : $100</p>
+              <p class="text-2xl">Grand Total: $100</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script src="./../js/kutty.js"></script>
+  <script src="./../js/main.js"></script>
+  <script src="./../js/alpine.js"></script>
+  <script src="./../js/dropdown.js"></script>
+  <script src="./../js/icons.js" crossorigin="anonymous"></script>
+</html>
